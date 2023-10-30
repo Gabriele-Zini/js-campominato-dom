@@ -86,7 +86,7 @@ function handleClick() {
       } /* ciclo for per iterare su tutte le celle con una bomba */
       messageContent.textContent = `Hai perso dopo ${cellClicked} tentativi`; /* messaggio di game over */
       message.classList.remove("d-hidden");
-   
+      playBtn.removeEventListener("click", handlePlayBtn);
       for (let i = 0; i < cell.length; i++) {
         cell[i].removeEventListener("click", handleClick);
       } /* ciclo per rimuovere su ogni cella l'eventListener */
@@ -206,5 +206,6 @@ function handleRestart() {
     bombCell.classList.remove("rd-bg");
   }
   message.classList.add("d-hidden");
+  playBtn.addEventListener("click", handlePlayBtn);
   handleSelect();
 }
