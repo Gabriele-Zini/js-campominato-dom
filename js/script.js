@@ -91,19 +91,28 @@ function handleClick() {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
-          cell[i].removeEventListener("click", handleClick);/* ciclo per rimuovere su ogni cella l'eventListener */
+          cell[i].removeEventListener(
+            "click",
+            handleClick
+          ); /* ciclo per rimuovere su ogni cella l'eventListener */
         }
       } else if (cellClicked === medium - 16 && value === "medio") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
-          cell[i].removeEventListener("click", handleClick);/* ciclo per rimuovere su ogni cella l'eventListener */
+          cell[i].removeEventListener(
+            "click",
+            handleClick
+          ); /* ciclo per rimuovere su ogni cella l'eventListener */
         }
       } else if (cellClicked === hard - 16 && value === "difficile") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
-          cell[i].removeEventListener("click", handleClick);/* ciclo per rimuovere su ogni cella l'eventListener */
+          cell[i].removeEventListener(
+            "click",
+            handleClick
+          ); /* ciclo per rimuovere su ogni cella l'eventListener */
         }
       }
     }
@@ -189,4 +198,5 @@ function handleRestart() {
     bombCell.classList.remove("rd-bg");
   }
   message.classList.add("d-hidden");
+  handleSelect();
 }
