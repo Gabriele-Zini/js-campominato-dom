@@ -182,13 +182,11 @@ function handleRestart() {
   const cell = document.querySelectorAll(".cell");
   for (let i = 0; i < cell.length; i++) {
     cell[i].classList.remove("light-blue");
+    cell[i].addEventListener("click", handleClick);
   }
   for (let i = 0; i < bombs.length; i++) {
     const bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
     bombCell.classList.remove("rd-bg");
-  }
-  for (let i = 0; i < cell.length; i++) {
-    cell[i].addEventListener("click", handleClick);
   }
   message.classList.add("d-hidden");
 }
