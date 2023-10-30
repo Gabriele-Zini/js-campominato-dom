@@ -88,7 +88,7 @@ function handleClick() {
       console.log("numero di celle cliccate " + cellClicked);
       //   console.log(innerNumber);
       if (cellClicked === easy - 16 && value === "facile") {
-        messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
+        messageContent.textContent = `Hai vinto!`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
           cell[i].removeEventListener(
@@ -97,7 +97,7 @@ function handleClick() {
           ); /* ciclo per rimuovere su ogni cella l'eventListener */
         }
       } else if (cellClicked === medium - 16 && value === "medio") {
-        messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
+        messageContent.textContent = `Hai vinto!`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
           cell[i].removeEventListener(
@@ -106,7 +106,7 @@ function handleClick() {
           ); /* ciclo per rimuovere su ogni cella l'eventListener */
         }
       } else if (cellClicked === hard - 16 && value === "difficile") {
-        messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
+        messageContent.textContent = `Hai vinto!`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
           cell[i].removeEventListener(
