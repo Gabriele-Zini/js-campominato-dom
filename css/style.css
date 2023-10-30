@@ -58,7 +58,6 @@ position: relative;
 }
 
 .cell:hover {
-    background-color: rgb(65, 201, 65);
     cursor: pointer;
 }
 
@@ -77,9 +76,7 @@ background-color: rgb(110, 110, 249);
 color: white;
 }
 
-.light-blue:hover {
-    background-color: blue;
-}
+
 
 .rd-bg {
     background-color: red;
