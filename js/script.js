@@ -159,7 +159,6 @@ function handleSelect() {
 // funzione per gestire il tasto play
 function handlePlayBtn() {
   let value = select.value;
-  message.classList.add("d-hidden");
   if (value !== "default") {
     title.classList.add("d-hidden");
     titleContainer.classList.add("d-hidden");
