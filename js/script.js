@@ -54,7 +54,7 @@ function generateCell(numMax) {
   const newCell = document.createElement("div");
   newCell.classList.add("cell");
   newCell.style.width = `${100 / Math.sqrt(numMax)}%`;
-//   addEventlistener di ogni cella
+  // addEventlistener di ogni cella
   newCell.addEventListener("click", handleClick);
   return newCell;
 }
@@ -75,12 +75,12 @@ function handleClick() {
       for (let i = 0; i < bombs.length; i++) {
         const bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
         bombCell.classList.add("rd-bg");
-      }
-      messageContent.textContent = `Hai perso, celle blu cliccate: ${cellClicked}`;
+      } /* ciclo for per iterare su tutte le celle con una bomba */
+      messageContent.textContent = `Hai perso, celle blu cliccate: ${cellClicked}`; /* messaggio di game over */
       message.classList.remove("d-hidden");
       for (let i = 0; i < cell.length; i++) {
         cell[i].removeEventListener("click", handleClick);
-      }
+      } /* ciclo per rimuovere su ogni cella l'eventListener */
     } else {
       this.classList.add("light-blue");
       cellClicked += 1;
