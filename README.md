@@ -18,6 +18,21 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
 
 1. implementare una funzione che genera numeri casuali in un range da min a max;
 2. implementare funzione che genera n numeri casuali tutti diversi nel range da min a max e li pusha in un array chiamato "bombs"
+
+```javascript
+/* funzione che crea l'array bombs */
+function createBombs(numBombs, numCells) {
+  bombs = [];
+  while (bombs.length < numBombs) {
+    const bomb = randomNumber(numCells);
+    if (!bombs.includes(bomb)) {
+      bombs.push(bomb);
+    }
+  }
+  return bombs;
+}
+```
+
 3. creare una funzione che gestisca il click sulle celle:
    - se l'utente becca una bomba tutte le celle che sono nell'array bombs si colorano di rosso e l'utente perde
    - altrimenti la cella si colora di blu e l'utente continua a giocare
@@ -48,6 +63,7 @@ function handleClick() {
         cell[i].removeEventListener("click", handleClick);
       } /* ciclo per rimuovere su ogni cella l'eventListener */
     }
+  }
 ```
 
 - quando l'utente clicca sulle caselle senza bomba per un numero di numeroTotaleCaselle - NumeroBombe
@@ -91,7 +107,50 @@ else {
 
 ```
 
-5. implentare un button di restart per quandpo finisce la partita.
+5. implementare l'elemento html select per creare la griglia a seconda del livello di difficoltà scelto.
+   - In base a questa scelta stampare sul Dom il messagio con il contenuto del livello scelto e l'opzione di pigiare il tasto play per avviare il gioco.
+   - settare una condition per invocare la funzione che crea la griglia createGrid e a seconda del livello scelto impostare un diverso parametro numMax, che corrisponde al numero massimo di celle
+
+````javascript
+    // funzione per gestire il select
+function handleSelect() {
+  bombs = [];
+  let value = select.value;
+  container.innerHTML = "";
+  title.innerHTML = `Hai scelto il livello ${value}, clicca play per iniziare a giocare`;
+  if (value === "default") {
+    title.innerHTML = "Scegli un livello di gioco";
+    container.classList.add("d-hidden");
+    title.classList.remove("d-hidden");
+    titleContainer.classList.remove("d-hidden");
+  } else {
+    if (value === "facile") {
+      createGrid(100);
+      container.classList.add("d-hidden");
+      title.classList.remove("d-hidden");
+      titleContainer.classList.remove("d-hidden");
+      bombs = createBombs(16, 100);
+      console.log(bombs);
+    } else if (value === "medio") {
+      createGrid(81);
+      container.classList.add("d-hidden");
+      title.classList.remove("d-hidden");
+      titleContainer.classList.remove("d-hidden");
+      bombs = createBombs(16, 81);
+      console.log(bombs);
+    } else if (value === "difficile") {
+      createGrid(49);
+      container.classList.add("d-hidden");
+      title.classList.remove("d-hidden");
+      titleContainer.classList.remove("d-hidden");
+      bombs = createBombs(16, 49);
+      console.log(bombs);
+    }
+  }
+}
+    ```
+
+6. implentare un button di restart per quandpo finisce la partita.
 
    - il cellClicked, variabile che tiene conto dei click senza bombte, viene resettato a 0
    - il cellClikedArray viene svuotato di tutti i suoi valori.
@@ -116,4 +175,4 @@ function handleRestart() {
   message.classList.add("d-hidden");
   handleSelect();
 }
-```
+````
