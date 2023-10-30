@@ -91,19 +91,19 @@ function handleClick() {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
-          cell[i].removeEventListener("click", handleClick);
+          cell[i].removeEventListener("click", handleClick);/* ciclo per rimuovere su ogni cella l'eventListener */
         }
       } else if (cellClicked === medium - 16 && value === "normal") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
-          cell[i].removeEventListener("click", handleClick);
+          cell[i].removeEventListener("click", handleClick);/* ciclo per rimuovere su ogni cella l'eventListener */
         }
       } else if (cellClicked === hard - 16 && value === "hard") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
-          cell[i].removeEventListener("click", handleClick);
+          cell[i].removeEventListener("click", handleClick);/* ciclo per rimuovere su ogni cella l'eventListener */
         }
       }
     }
