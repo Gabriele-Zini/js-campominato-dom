@@ -56,6 +56,12 @@ justify-content: center;
 align-items: center;
 }
 
+.cell:hover {
+    background-color: green;
+    cursor: pointer;
+}
+
+
 .justify-content-between {
     justify-content:space-between;
 }
@@ -68,6 +74,10 @@ button {
 .light-blue {
 background-color: rgb(110, 110, 249);
 color: white;
+}
+
+.light-blue:hover {
+    background-color: blue;
 }
 
 .rd-bg {
