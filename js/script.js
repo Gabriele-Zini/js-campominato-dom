@@ -76,7 +76,7 @@ function handleClick() {
         const bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
         bombCell.classList.add("rd-bg");
       } /* ciclo for per iterare su tutte le celle con una bomba */
-      messageContent.textContent = `Hai perso, celle blu cliccate: ${cellClicked}`; /* messaggio di game over */
+      messageContent.textContent = `Hai perso dopo ${cellClicked} tentativi`; /* messaggio di game over */
       message.classList.remove("d-hidden");
       for (let i = 0; i < cell.length; i++) {
         cell[i].removeEventListener("click", handleClick);
