@@ -118,6 +118,7 @@ main {
     text-align: center;
     box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.345);
     font-size: 1.3rem;
+    padding: 1rem;
 }
 
 .end-game-msg {

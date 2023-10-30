@@ -25,7 +25,7 @@ let messageContent = document.querySelector(".message-content");
 const messageContainer = document.querySelector(".message-container");
 
 // restart btn
-let restart = document.querySelector(".restart");
+const restart = document.querySelector(".restart");
 
 // EVENTLISTENER
 
@@ -34,6 +34,9 @@ select.addEventListener("change", handleSelect);
 
 // addEventListener del play-btn
 playBtn.addEventListener("click", handlePlayBtn);
+
+// addEventListener del restart-btn
+restart.addEventListener("click", handleRestart);
 
 // FUNZIONI
 
@@ -67,7 +70,10 @@ function handleClick() {
     !this.classList.contains("rd-bg")
   ) {
     if (bombs.includes(innerNumber)) {
-      this.classList.add("rd-bg");
+      for (let i = 0; i < bombs.length; i++) {
+        const bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
+        bombCell.classList.add("rd-bg");
+      }
       messageContent.textContent = `Hai perso, celle blu cliccate: ${cellClicked}`;
       message.classList.remove("d-hidden");
     } else {
@@ -151,4 +157,9 @@ function createBombs(numBombs, numCells) {
     }
   }
   return bombs;
+}
+
+// funzione del restart click
+function handleRestart() {
+  cellClicked = 0;
 }
