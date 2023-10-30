@@ -22,4 +22,4 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
     - altrimenti la cella si colora di blu e l'utente continua a giocare
 - creare una funzione per gestire l'esito della partita 
     - quando l'utente clicca su una bomba
-    - quando l'utente o clicca sulle caselle senza bomba per un numero di numeroTotaleCaselle - NumeroBombe
+    - quando l'utente clicca sulle caselle senza bomba per un numero di numeroTotaleCaselle - NumeroBombe

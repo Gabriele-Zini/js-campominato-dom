@@ -89,6 +89,10 @@ align-items: center;
     width: 250px;
 }
 
+.relative {
+    position: relative;
+}
+
 /* MAIN */
 
 main {
@@ -115,6 +119,21 @@ main {
     box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.345);
     font-size: 1.3rem;
 }
+
+.end-game-msg {
+    position: absolute;
+    font-size: 2rem;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-30%);
+    background-color: white;
+    padding: 2rem;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.345);
+}
+
+
 
 /* FOOTER */
 footer {

@@ -9,12 +9,23 @@ const select = document.getElementById("level");
 // playbtn
 const playBtn = document.getElementById("play-btn");
 
+// numero di celle cliccate
+let cellClicked = 0;
+
 // title
 const title = document.querySelector(".title");
 const titleContainer = document.querySelector(".title-container");
 
 // array bombs
 let bombs = [];
+
+// messagio end-game
+let message = document.querySelector(".end-game-msg");
+let messageContent = document.querySelector(".message-content");
+const messageContainer = document.querySelector(".message-container");
+
+// restart btn
+let restart = document.querySelector(".restart");
 
 // EVENTLISTENER
 
@@ -46,13 +57,36 @@ function generateCell(numMax) {
 
 // funzione per gestire il click sulla singola cella
 function handleClick() {
+  let easy = 100;
+  let medium = 81;
+  let hard = 49;
+  let value = select.value;
   const innerNumber = parseInt(this.textContent);
-  if (bombs.includes(innerNumber)) {
-    this.classList.add("rd-bg");
-  } else {
-    this.classList.add("light-blue");
+  if (
+    !this.classList.contains("light-blue") &&
+    !this.classList.contains("rd-bg")
+  ) {
+    if (bombs.includes(innerNumber)) {
+      this.classList.add("rd-bg");
+      messageContent.textContent = `Hai perso, celle blu cliccate: ${cellClicked}`;
+      message.classList.remove("d-hidden");
+    } else {
+      this.classList.add("light-blue");
+      cellClicked += 1;
+      console.log("numero di celle cliccate " + cellClicked);
+      //   console.log(innerNumber);
+      if (cellClicked === easy - 16 && value === "easy") {
+        messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
+        message.classList.remove("d-hidden");
+      } else if (cellClicked === medium - 16 && value === "normal") {
+        messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
+        message.classList.remove("d-hidden");
+      } else if (cellClicked === hard - 16 && value === "hard") {
+        messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
+        message.classList.remove("d-hidden");
+      }
+    }
   }
-  console.log(innerNumber);
 }
 
 // funzione per gestire il select
@@ -71,18 +105,21 @@ function handleSelect() {
       createGrid(100);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
+      titleContainer.classList.remove("d-hidden");
       bombs = createBombs(16, 100);
       console.log(bombs);
     } else if (value === "normal") {
       createGrid(81);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
+      titleContainer.classList.remove("d-hidden");
       bombs = createBombs(16, 81);
       console.log(bombs);
     } else if (value === "hard") {
       createGrid(49);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
+      titleContainer.classList.remove("d-hidden");
       bombs = createBombs(16, 49);
       console.log(bombs);
     }
@@ -92,6 +129,7 @@ function handleSelect() {
 // funzione per gestire il tasto play
 function handlePlayBtn() {
   let value = select.value;
+  message.classList.add("d-hidden");
   if (value !== "default") {
     title.classList.add("d-hidden");
     titleContainer.classList.add("d-hidden");
