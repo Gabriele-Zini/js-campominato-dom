@@ -87,19 +87,19 @@ function handleClick() {
       cellClickedArray.push(this);
       console.log("numero di celle cliccate " + cellClicked);
       //   console.log(innerNumber);
-      if (cellClicked === easy - 16 && value === "easy") {
+      if (cellClicked === easy - 16 && value === "facile") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
           cell[i].removeEventListener("click", handleClick);/* ciclo per rimuovere su ogni cella l'eventListener */
         }
-      } else if (cellClicked === medium - 16 && value === "normal") {
+      } else if (cellClicked === medium - 16 && value === "medio") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
           cell[i].removeEventListener("click", handleClick);/* ciclo per rimuovere su ogni cella l'eventListener */
         }
-      } else if (cellClicked === hard - 16 && value === "hard") {
+      } else if (cellClicked === hard - 16 && value === "difficile") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
         for (let i = 0; i < cell.length; i++) {
@@ -122,21 +122,21 @@ function handleSelect() {
     title.classList.remove("d-hidden");
     titleContainer.classList.remove("d-hidden");
   } else {
-    if (value === "easy") {
+    if (value === "facile") {
       createGrid(100);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
       titleContainer.classList.remove("d-hidden");
       bombs = createBombs(16, 100);
       console.log(bombs);
-    } else if (value === "normal") {
+    } else if (value === "medio") {
       createGrid(81);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
       titleContainer.classList.remove("d-hidden");
       bombs = createBombs(16, 81);
       console.log(bombs);
-    } else if (value === "hard") {
+    } else if (value === "difficile") {
       createGrid(49);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
