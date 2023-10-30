@@ -66,6 +66,7 @@ function handleClick() {
   let medium = 81;
   let hard = 49;
   let value = select.value;
+  let bombCell;
   const innerNumber = parseInt(this.textContent);
   if (
     !this.classList.contains("light-blue") &&
@@ -73,11 +74,19 @@ function handleClick() {
   ) {
     if (bombs.includes(innerNumber)) {
       for (let i = 0; i < bombs.length; i++) {
-        const bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
+        bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
         bombCell.classList.add("rd-bg");
+        const gif = document.createElement("img");
+        gif.src = "./img/bomb-gif.gif";
+        gif.style.width = "100%";
+        gif.style.height = "100%";
+        gif.style.position = "absolute";
+        gif.style.objectFit = "cover";
+        bombCell.appendChild(gif);
       } /* ciclo for per iterare su tutte le celle con una bomba */
       messageContent.textContent = `Hai perso dopo ${cellClicked} tentativi`; /* messaggio di game over */
       message.classList.remove("d-hidden");
+   
       for (let i = 0; i < cell.length; i++) {
         cell[i].removeEventListener("click", handleClick);
       } /* ciclo per rimuovere su ogni cella l'eventListener */

@@ -54,10 +54,11 @@ aspect-ratio: 1/1;
 display: flex;
 justify-content: center;
 align-items: center;
+position: relative;
 }
 
 .cell:hover {
-    background-color: green;
+    background-color: rgb(65, 201, 65);
     cursor: pointer;
 }
 
@@ -83,6 +84,10 @@ color: white;
 .rd-bg {
     background-color: red;
     color: white;
+}
+
+.rd-bg:hover {
+    background-color: rgb(165, 24, 24);
 }
 
 .d-hidden {
