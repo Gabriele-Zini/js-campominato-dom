@@ -124,21 +124,21 @@ main {
 .title-container {
     justify-content: center;
     align-items: center;
-    height: 50%;
+    height: 40%;
     border: 2px solid black;
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     text-align: center;
     box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.345);
-    font-size: 1.3rem;
+    font-size: .7rem;
     padding: 1rem;
 }
 
 .end-game-msg {
     position: absolute;
-    font-size: 2rem;
+    font-size: 1.2rem;
     top: 40%;
     left: 50%;
     transform: translateX(-50%) translateY(-30%);
@@ -147,6 +147,7 @@ main {
     border: 2px solid black;
     border-radius: 20px;
     box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.345);
+    line-height: 3rem;
 }
 
 
