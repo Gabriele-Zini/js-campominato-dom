@@ -11,6 +11,7 @@ const playBtn = document.getElementById("play-btn");
 
 // numero di celle cliccate
 let cellClicked = 0;
+let cellClickedArray = [];
 
 // title
 const title = document.querySelector(".title");
@@ -22,7 +23,6 @@ let bombs = [];
 // messagio end-game
 let message = document.querySelector(".end-game-msg");
 let messageContent = document.querySelector(".message-content");
-const messageContainer = document.querySelector(".message-container");
 
 // restart btn
 const restart = document.querySelector(".restart");
@@ -60,6 +60,7 @@ function generateCell(numMax) {
 
 // funzione per gestire il click sulla singola cella
 function handleClick() {
+  const cell = document.querySelectorAll(".cell");
   let easy = 100;
   let medium = 81;
   let hard = 49;
@@ -76,20 +77,33 @@ function handleClick() {
       }
       messageContent.textContent = `Hai perso, celle blu cliccate: ${cellClicked}`;
       message.classList.remove("d-hidden");
+      for (let i = 0; i < cell.length; i++) {
+        cell[i].removeEventListener("click", handleClick);
+      }
     } else {
       this.classList.add("light-blue");
       cellClicked += 1;
+      cellClickedArray.push(this);
       console.log("numero di celle cliccate " + cellClicked);
       //   console.log(innerNumber);
       if (cellClicked === easy - 16 && value === "easy") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
+        for (let i = 0; i < cell.length; i++) {
+          cell[i].removeEventListener("click", handleClick);
+        }
       } else if (cellClicked === medium - 16 && value === "normal") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
+        for (let i = 0; i < cell.length; i++) {
+          cell[i].removeEventListener("click", handleClick);
+        }
       } else if (cellClicked === hard - 16 && value === "hard") {
         messageContent.textContent = `Hai vinto, celle blu cliccate: ${cellClicked}`;
         message.classList.remove("d-hidden");
+        for (let i = 0; i < cell.length; i++) {
+          cell[i].removeEventListener("click", handleClick);
+        }
       }
     }
   }
@@ -150,6 +164,7 @@ function randomNumber(max) {
 
 /* funzione che crea l'array bombs */
 function createBombs(numBombs, numCells) {
+  bombs = [];
   while (bombs.length < numBombs) {
     const bomb = randomNumber(numCells);
     if (!bombs.includes(bomb)) {
@@ -162,4 +177,17 @@ function createBombs(numBombs, numCells) {
 // funzione del restart click
 function handleRestart() {
   cellClicked = 0;
+  cellClickedArray = [];
+  const cell = document.querySelectorAll(".cell");
+  for (let i = 0; i < cell.length; i++) {
+    cell[i].classList.remove("light-blue");
+  }
+  for (let i = 0; i < bombs.length; i++) {
+    const bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
+    bombCell.classList.remove("rd-bg");
+  }
+  for (let i = 0; i < cell.length; i++) {
+    cell[i].addEventListener("click", handleClick);
+  }
+  message.classList.add("d-hidden");
 }
