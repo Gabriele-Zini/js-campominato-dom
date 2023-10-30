@@ -54,6 +54,7 @@ function generateCell(numMax) {
   const newCell = document.createElement("div");
   newCell.classList.add("cell");
   newCell.style.width = `${100 / Math.sqrt(numMax)}%`;
+//   addEventlistener di ogni cella
   newCell.addEventListener("click", handleClick);
   return newCell;
 }
