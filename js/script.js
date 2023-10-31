@@ -11,7 +11,6 @@ const playBtn = document.getElementById("play-btn");
 
 // numero di celle cliccate
 let cellClicked = 0;
-let cellClickedArray = [];
 
 // title
 const title = document.querySelector(".title");
@@ -110,7 +109,6 @@ function handleClick() {
     } else {
       this.classList.add("light-blue");
       cellClicked += 1;
-      cellClickedArray.push(this);
       console.log("numero di celle cliccate " + cellClicked);
       //   console.log(innerNumber);
       if (cellClicked === easy - 16 && value === "facile") {
@@ -206,7 +204,6 @@ function handlePlayBtn() {
 // funzione del restart click
 function handleRestart() {
   cellClicked = 0;
-  cellClickedArray = [];
   const cell = document.querySelectorAll(".cell");
   for (let i = 0; i < cell.length; i++) {
     cell[i].classList.remove("light-blue");
