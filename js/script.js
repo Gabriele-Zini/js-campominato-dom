@@ -2,6 +2,7 @@
 
 // container delle celle
 const container = document.querySelector(".container");
+let gridSize = 0;
 
 // select btn
 const select = document.getElementById("level");
@@ -85,8 +86,13 @@ function handleClick() {
     if (bombs.includes(innerNumber)) {
       gameOver();
     } else {
-      this.classList.add("light-blue");
-      win();
+      const isCellBomb = checkCellBombs(innerNumber, gridSize);
+      if (isCellBomb) {
+        this.classList.add("orange");
+      } else {
+        this.classList.add("light-blue");
+        win();
+      }
     }
   }
 }
@@ -104,21 +110,24 @@ function handleSelect() {
     titleContainer.classList.remove("d-hidden");
   } else {
     if (value === "facile") {
-      createGrid(100);
+      gridSize = 100;
+      createGrid(gridSize);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
       titleContainer.classList.remove("d-hidden");
       /* bombs = createBombs(16, 100); */
       console.log(bombs);
     } else if (value === "medio") {
-      createGrid(81);
+      gridSize = 81;
+      createGrid(gridSize);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
       titleContainer.classList.remove("d-hidden");
       /* bombs = createBombs(16, 81); */
       console.log(bombs);
     } else if (value === "difficile") {
-      createGrid(49);
+      gridSize = 49;
+      createGrid(gridSize);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
       titleContainer.classList.remove("d-hidden");
@@ -164,6 +173,9 @@ function handleRestart() {
   for (let i = 0; i < bombs.length; i++) {
     const bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
     bombCell.classList.remove("rd-bg");
+  }
+  for (let i = 0; i < cell.length; i++) {
+    cell[i].classList.remove("orange");
   }
   message.classList.add("d-hidden");
   playBtn.addEventListener("click", handlePlayBtn);
@@ -230,4 +242,39 @@ function gameOver() {
   for (let i = 0; i < cell.length; i++) {
     cell[i].removeEventListener("click", handleClick);
   } /* ciclo per rimuovere su ogni cella l'eventListener */
+}
+
+// funziona che controlla se c'è una bomba accanto all'elemento cliccato
+function checkCellBombs(cellNumber, gridSize) {
+  const row = Math.floor((cellNumber - 1) / Math.sqrt(gridSize));
+  const col = (cellNumber - 1) % Math.sqrt(gridSize);
+
+  const positions = [
+    [-1, 0],
+    [1, 0],
+    [0, -1],
+    [0, 1],
+  ];
+
+  for (let i = 0; i < positions.length; i++) {
+    const rowOffset = positions[i][0];
+    const colOffset = positions[i][1];
+    const newRow = row + rowOffset;
+    const newCol = col + colOffset;
+
+    if (
+      newRow >= 0 &&
+      newRow < Math.sqrt(gridSize) &&
+      newCol >= 0 &&
+      newCol < Math.sqrt(gridSize)
+    ) {
+      const cellCellNumber = newRow * Math.sqrt(gridSize) + newCol + 1;
+
+      if (bombs.includes(cellCellNumber)) {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
