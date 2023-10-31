@@ -89,6 +89,7 @@ function handleClick() {
       const isCellBomb = checkCellBombs(innerNumber, gridSize);
       if (isCellBomb) {
         this.classList.add("orange");
+        cellClicked += 1;
       } else {
         this.classList.add("light-blue");
         win();
@@ -256,12 +257,14 @@ function checkCellBombs(cellNumber, gridSize) {
     [0, 1],
   ];
 
+  // si itera sulle posizioni vicine alle celle
   for (let i = 0; i < positions.length; i++) {
     const rowOffset = positions[i][0];
     const colOffset = positions[i][1];
     const newRow = row + rowOffset;
     const newCol = col + colOffset;
 
+    // si impostano le condizioni per verificare se la posizione è dentro la griglia
     if (
       newRow >= 0 &&
       newRow < Math.sqrt(gridSize) &&
