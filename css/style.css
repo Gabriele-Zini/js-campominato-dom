@@ -85,7 +85,9 @@ color: white;
     color: white;
 }
 
-
+.orange {
+    background-color: orange;
+}
 
 .d-hidden {
     display: none;
@@ -98,7 +100,7 @@ min-height: 80px;
 align-items: center;
 }
 
-.logo img {
+.big-logo {
     width: 250px;
 }
 
@@ -147,7 +149,10 @@ main {
     border: 2px solid black;
     border-radius: 20px;
     box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.345);
-    line-height: 3rem;
+}
+
+.end-game-msg p {
+    margin-bottom: 2rem;
 }
 
 
