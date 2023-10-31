@@ -40,13 +40,9 @@ restart.addEventListener("click", handleRestart);
 
 // FUNZIONI
 
-// funzione per creare la griglia
-function createGrid(numMax) {
-  for (let i = 1; i <= numMax; i++) {
-    const cell = generateCell(numMax);
-    cell.textContent = i;
-    container.append(cell);
-  }
+/* funzione per creare numeri casuali */
+function randomNumber(max) {
+  return Math.floor(Math.random() * max) + 1;
 }
 
 // funzione per creare una singola cella
@@ -57,6 +53,27 @@ function generateCell(numMax) {
   // addEventlistener di ogni cella
   newCell.addEventListener("click", handleClick);
   return newCell;
+}
+
+// funzione per creare la griglia
+function createGrid(numMax) {
+  for (let i = 1; i <= numMax; i++) {
+    const cell = generateCell(numMax);
+    cell.textContent = i;
+    container.append(cell);
+  }
+}
+
+/* funzione che crea l'array bombs */
+function createBombs(numBombs, numCells) {
+  bombs = [];
+  while (bombs.length < numBombs) {
+    const bomb = randomNumber(numCells);
+    if (!bombs.includes(bomb)) {
+      bombs.push(bomb);
+    }
+  }
+  return bombs;
 }
 
 // funzione per gestire il click sulla singola cella
@@ -186,28 +203,10 @@ function handlePlayBtn() {
   }
 }
 
-/* funzione per creare numeri casuali */
-function randomNumber(max) {
-  return Math.floor(Math.random() * max) + 1;
-}
-
-/* funzione che crea l'array bombs */
-function createBombs(numBombs, numCells) {
-  bombs = [];
-  while (bombs.length < numBombs) {
-    const bomb = randomNumber(numCells);
-    if (!bombs.includes(bomb)) {
-      bombs.push(bomb);
-    }
-  }
-  return bombs;
-}
-
 // funzione del restart click
 function handleRestart() {
   cellClicked = 0;
   cellClickedArray = [];
-
   const cell = document.querySelectorAll(".cell");
   for (let i = 0; i < cell.length; i++) {
     cell[i].classList.remove("light-blue");
