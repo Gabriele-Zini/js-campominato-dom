@@ -77,8 +77,6 @@ function createBombs(numBombs, numCells) {
 
 // funzione per gestire il click sulla singola cella
 function handleClick() {
-  const cell = document.querySelectorAll(".cell");
-  let bombCell;
   const innerNumber = parseInt(this.textContent);
   if (
     !this.classList.contains("light-blue") &&
@@ -213,6 +211,8 @@ function win() {
 
 /* funzione in caso di gameover */
 function gameOver() {
+  const cell = document.querySelectorAll(".cell");
+  let bombCell;
   for (let i = 0; i < bombs.length; i++) {
     bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
     bombCell.classList.add("rd-bg");
