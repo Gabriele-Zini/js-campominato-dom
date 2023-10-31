@@ -130,7 +130,7 @@ function handleClick() {
 
 // funzione per gestire il select
 function handleSelect() {
-  bombs = [];
+  /*  bombs = []; */
   let value = select.value;
   container.innerHTML = "";
   title.innerHTML = `Hai scelto il livello ${value}, clicca play per iniziare a giocare`;
@@ -145,21 +145,21 @@ function handleSelect() {
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
       titleContainer.classList.remove("d-hidden");
-      bombs = createBombs(16, 100);
+      /* bombs = createBombs(16, 100); */
       console.log(bombs);
     } else if (value === "medio") {
       createGrid(81);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
       titleContainer.classList.remove("d-hidden");
-      bombs = createBombs(16, 81);
+      /* bombs = createBombs(16, 81); */
       console.log(bombs);
     } else if (value === "difficile") {
       createGrid(49);
       container.classList.add("d-hidden");
       title.classList.remove("d-hidden");
       titleContainer.classList.remove("d-hidden");
-      bombs = createBombs(16, 49);
+      /* bombs = createBombs(16, 49); */
       console.log(bombs);
     }
   }
@@ -168,10 +168,21 @@ function handleSelect() {
 // funzione per gestire il tasto play
 function handlePlayBtn() {
   let value = select.value;
+  bombs = [];
   if (value !== "default") {
     title.classList.add("d-hidden");
     titleContainer.classList.add("d-hidden");
     container.classList.remove("d-hidden");
+  }
+  if (value === "facile") {
+    bombs = createBombs(16, 100);
+    console.log(bombs);
+  } else if (value === "medio") {
+    bombs = createBombs(16, 81);
+    console.log(bombs);
+  } else if (value === "difficile") {
+    bombs = createBombs(16, 49);
+    console.log(bombs);
   }
 }
 
@@ -196,10 +207,15 @@ function createBombs(numBombs, numCells) {
 function handleRestart() {
   cellClicked = 0;
   cellClickedArray = [];
+
   const cell = document.querySelectorAll(".cell");
   for (let i = 0; i < cell.length; i++) {
     cell[i].classList.remove("light-blue");
     cell[i].addEventListener("click", handleClick);
+    const gifs = cell[i].querySelectorAll("img");
+    for (let j = 0; j < gifs.length; j++) {
+      cell[i].removeChild(gifs[j]);
+    }
   }
   for (let i = 0; i < bombs.length; i++) {
     const bombCell = document.querySelector(`.cell:nth-child(${bombs[i]})`);
@@ -207,5 +223,5 @@ function handleRestart() {
   }
   message.classList.add("d-hidden");
   playBtn.addEventListener("click", handlePlayBtn);
-  handleSelect();
+  handlePlayBtn();
 }
