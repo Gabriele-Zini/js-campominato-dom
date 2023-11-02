@@ -89,7 +89,7 @@ function handleClick() {
       const isCellBomb = checkCellBombs(innerNumber, gridSize);
       if (isCellBomb) {
         this.classList.add("orange");
-        cellClicked += 1;
+        win();
       } else {
         this.classList.add("light-blue");
         win();
